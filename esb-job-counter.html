@@ -1,0 +1,88 @@
+<html>
+<head>
+  <title>My Document</title>
+  <style>
+  body {
+    background-color: grey
+  }
+  </style>
+  <script type="text/javascript">
+
+  let order = [["Silver","Golden"],["Silver","Silver","Silver","Silver","Golden"],["Silver","Silver","Silver","Silver","Silver","Silver","Silver","Silver","Silver","Silver","Silver","Silver","Golden"],["Silver","Silver","Silver","Silver","Silver","Silver","Silver","Silver","Silver","Silver","Silver","Silver","Silver","Silver","Golden"],["Silver","Silver","Silver","Silver","Silver","Golden"],["Silver","Silver","Silver","Silver","Silver","Silver","Silver","Silver","Golden"],["Silver","Silver","Silver","Silver","Golden"],["Silver","Silver","Silver","Silver","Silver","Silver","Silver","Silver","Golden"],["Silver","Silver","Silver","Silver","Silver","Silver","Silver","Silver","Silver","Silver","Silver","Silver","Silver","Golden"],["Silver","Silver","Silver","Silver","Silver","Silver","Silver","Golden"],["Silver","Silver","Silver","Silver","Silver","Silver","Silver","Silver","Silver","Silver","Silver","Silver"]];
+
+
+  function initTable() {
+    // document.getElementsByTagName("H1") returns a NodeList of the P
+    // elements in the document, and the first is number 0:
+
+    //var header = document.getElementsByTagName("H1").item(0);
+    // the firstChild of the header is a Text node:
+    //header.firstChild.data = "A dynamic document";
+    // now the header is "A dynamic document".
+
+    var para = document.getElementsByTagName("P").item(0);
+    //para.firstChild.data = "This is the first paragraph.";
+
+    createChestTable(order);
+
+    // create a new Text node for the second paragraph
+    //var newText = document.createTextNode("Next chest is: " + getNextChest(currpos));
+    //currpos++;
+    // create a new Element to be the second paragraph
+    var newElement = document.createElement("P");
+    // put the text in the paragraph
+    newElement.appendChild(newText);
+    // and put the paragraph on the end of the document by appending it to
+    // the BODY (which is the parent of para)
+    para.parentNode.appendChild(newElement);
+  }
+
+  function getNextChest(index) {
+        if (index == order.length - 1){
+      return order[0];
+    }
+    else {
+      return order[index+1];
+    }
+  }
+
+  function createChestTable(tableData) {
+  var table = document.createElement('table');
+  table.setAttribute("id", "ChestTable");
+  var tableBody = document.createElement('tbody');
+
+  tableData.forEach(function(rowData) {
+    var row = document.createElement('tr');
+
+    rowData.forEach(function(cellData) {
+      var cell = document.createElement('td');
+      cell.style.color = ((cellData == "Golden" ? "gold" : "silver"));
+      cell.appendChild(document.createTextNode(cellData));
+      row.appendChild(cell);
+    });
+
+    tableBody.appendChild(row);
+  });
+
+  table.appendChild(tableBody);
+  document.body.appendChild(table);
+  }
+
+  function makeBoldValue(index){
+    var t = document.getElementById("ChestTable");
+    var position = 0;
+    for (var row in t.getElementsByTagName("tbody")[0]){
+      for cell()
+    }
+  }
+  </script>
+</head>
+<body onload="initTable()">
+  <input type="button" value="Increment position">
+  <input type="button" value="Set position">
+  <input type="number">
+  <h1>Chest counter</h1>
+  <p></p>
+
+</body>
+</html>
